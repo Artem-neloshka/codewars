@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vital\\OneDrive\\Робочий стіл\\github projects\\Codewars solutions\\Codewars solutions.csproj": {}
+    "C:\\Users\\vital\\OneDrive\\Робочий стіл\\github projects\\codewars\\Codewars solutions.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vital\\OneDrive\\Робочий стіл\\github projects\\Codewars solutions\\Codewars solutions.csproj": {
+    "C:\\Users\\vital\\OneDrive\\Робочий стіл\\github projects\\codewars\\Codewars solutions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vital\\OneDrive\\Робочий стіл\\github projects\\Codewars solutions\\Codewars solutions.csproj",
+        "projectUniqueName": "C:\\Users\\vital\\OneDrive\\Робочий стіл\\github projects\\codewars\\Codewars solutions.csproj",
         "projectName": "Codewars solutions",
-        "projectPath": "C:\\Users\\vital\\OneDrive\\Робочий стіл\\github projects\\Codewars solutions\\Codewars solutions.csproj",
+        "projectPath": "C:\\Users\\vital\\OneDrive\\Робочий стіл\\github projects\\codewars\\Codewars solutions.csproj",
         "packagesPath": "C:\\Users\\vital\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vital\\OneDrive\\Робочий стіл\\github projects\\Codewars solutions\\obj\\",
+        "outputPath": "C:\\Users\\vital\\OneDrive\\Робочий стіл\\github projects\\codewars\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vital\\AppData\\Roaming\\NuGet\\NuGet.Config"
