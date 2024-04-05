@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -161,42 +162,83 @@ Also you can always take a look at how justification works in your text editor o
 
 Have fun :)*/
 
-public class Kata
-{
-  private static string WriteSpacesInLine(string line, int AmountOfSpacesToWrite)
-  {
-    string[] wordsInLine = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-    if (wordsInLine.Length == 1)
-    {
-      return line.Substring(0, line.Length - 1) + "\n";
-    }
-    int counter = 0;
+// public class Kata
+// {
+//   private static string WriteSpacesInLine(string line, int AmountOfSpacesToWrite)
+//   {
+//     string[] wordsInLine = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+//     if (wordsInLine.Length == 1)
+//     {
+//       return line.Substring(0, line.Length - 1) + "\n";
+//     }
+//     int counter = 0;
 
-    while (AmountOfSpacesToWrite > 0)
-    {
-      wordsInLine[counter % (wordsInLine.Length - 1)] += " ";
-      AmountOfSpacesToWrite--;
-      counter++;
-    }
+//     while (AmountOfSpacesToWrite > 0)
+//     {
+//       wordsInLine[counter % (wordsInLine.Length - 1)] += " ";
+//       AmountOfSpacesToWrite--;
+//       counter++;
+//     }
 
-    return string.Join(" ", wordsInLine) + "\n";
-  }
-	public static string WriteSpaces(string str, int TotalAmountOfSpaces)
-  {
-    string[] words = str.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-    StringBuilder line = new StringBuilder();
-    StringBuilder result = new StringBuilder();
-    for (int i = 0; i < words.Length; i++)
-    {
-      if ((line + words[i]).Length > TotalAmountOfSpaces)
-      {
-        result.Append(WriteSpacesInLine(line.ToString(), TotalAmountOfSpaces - line.Length));
-        line.Clear();
-      }
-      line.Append((i == words.Length - 1) ? words[i] : words[i] + " ");
-    }
+//     return string.Join(" ", wordsInLine) + "\n";
+//   }
+// 	public static string WriteSpaces(string str, int TotalAmountOfSpaces)
+//   {
+//     string[] words = str.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+//     StringBuilder line = new StringBuilder();
+//     StringBuilder result = new StringBuilder();
+//     for (int i = 0; i < words.Length; i++)
+//     {
+//       if ((line + words[i]).Length > TotalAmountOfSpaces)
+//       {
+//         result.Append(WriteSpacesInLine(line.ToString(), TotalAmountOfSpaces - line.Length));
+//         line.Clear();
+//       }
+//       line.Append((i == words.Length - 1) ? words[i] : words[i] + " ");
+//     }
     
-		return result.Append(line).ToString();
+// 		return result.Append(line).ToString();
+//   }
+// }
+
+
+
+
+/*4 kyu
+A Hamming number is a positive integer of the form 2^i*3^j*5^k,
+for some non-negative integers i, j, and k.
+
+Write a function that computes the n-th smallest Hamming number.
+
+Specifically:
+
+The first smallest Hamming number is 1 = 2^0*3^0*5^0
+The second smallest Hamming number is 2 = 2^1*3^0*5^0
+The third smallest Hamming number is 3 = 2^0*3^1*5^0
+The fourth smallest Hamming number is 4 = 2^2*3^0*5^0
+The fifth smallest Hamming number is 5 = 2^0*3^0*5^1
+The 20 smallest Hamming numbers are given in the Example test fixture.
+
+Your code should be able to compute the first 5 000 ( LC: 400, Clojure: 2 000,
+Haskell: 12 691, NASM, C, D, C++, Go and Rust: 13 282 ) Hamming numbers without timing out.*/
+
+public class Hamming
+{
+	public static long hamming(int n)
+  {
+    SortedSet<long> damnList = new SortedSet<long> {1};
+    long damnCurrentNum = 1;
+    for (int i = 0; i < n - 1; i++)
+    {
+      damnCurrentNum = damnList.Min;
+      damnList.Remove(damnCurrentNum);
+
+      damnList.Add(damnCurrentNum * 2);
+      damnList.Add(damnCurrentNum * 3);
+      damnList.Add(damnCurrentNum * 5);
+    }
+
+    return damnList.Min;
   }
 }
 
@@ -204,6 +246,6 @@ public class Program
 {
 	public static void Main(string[] args)
 	{
-		Console.WriteLine(Kata.WriteSpaces("123 45 6 98q5984 9q32 q q9 q 2q 43fq 2 3r32", 8));
+		Console.WriteLine(Hamming.hamming(18));
 	}
 }
